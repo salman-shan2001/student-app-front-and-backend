@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Naevebar from './Naevebar'
 
 const SearchStudent = () => {
+  const [data,setdata]=useState(
+    {
+      "admissionNumber":""
+    }
+  )
+
+  const inputHandler=(event)=>{
+    setdata({...data,[event.target.name] :event.target.value})
+  }
+
+  const readValue=()=>{
+  console.log(data)
+}
   return (
     <div>
          <Naevebar/>
@@ -12,10 +25,10 @@ const SearchStudent = () => {
                 <div className="row g-3">
                     <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                         <label htmlFor="" className="form-label">admission Number</label>
-                        <input type="text" className="form-control" />
+                        <input type="text" className="form-control"name='admissionNumber' value={data.admissionNumber} onChange={inputHandler} />
                     </div>
                     <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                       <center> <button className="btn btn-primary">SEARCH</button></center>
+                       <center> <button className="btn btn-primary" onClick={readValue}>SEARCH</button></center>
                     </div>
                 </div>
             </div>
